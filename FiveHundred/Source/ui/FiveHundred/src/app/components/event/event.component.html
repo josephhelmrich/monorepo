@@ -1,0 +1,126 @@
+<div class="container pt-3" *ngIf="event?.currentGame != null">
+  <div class="row justify-content-center">
+    <!-- current hand -->
+    <div class="col-lg-9 col-xl-9">
+      <div class="container pt-3" *ngIf="event?.currentGame">
+        <div class="row pb-0">
+          <div class="col">
+            <app-game-score [event]="event"></app-game-score>
+          </div>
+        </div>
+        <div class="row pt-3">
+          <div class="d-flex justify-content-center">
+            <a class="d-xl-none d-lg-none" routerLink="" [queryParams]="{view:'Score'}" queryParamsHandling="merge">SCORE TABLE</a>
+          </div>
+        </div>
+        <div class="row mt-4 score-table">
+          <div class="col">
+            <div class="container-fluid p-0">
+              <div class="row pb-3">
+                <div class="col-2 p-0"></div>
+                <div class="col-2 ps-2"><img src="/assets/spades.png" width="30"></div>
+                <div class="col-2 ps-2"><img src="/assets/clubs.png" width="30"></div>
+                <div class="col-2 ps-2"><img src="/assets/diamonds.png" width="30"></div>
+                <div class="col-2 ps-1"><img src="/assets/hearts.png" width="30"></div>
+                <div class="col-2 ps-1"><img src="/assets/notrump.png" width="35"></div>
+              </div>
+              <div class="row p-2 alternate-row">
+                <div class="col-2">6</div>
+                <div class="col-2">60</div>
+                <div class="col-2">80</div>
+                <div class="col-2">100</div>
+                <div class="col-2">120</div>
+                <div class="col-2">140</div>
+              </div>
+              <div class="row p-2" *ngIf="nilScore === 150">
+                <div class="col-2">NIL</div>
+                <div class="col-10">
+                  <div class="d-flex justify-content-center">{{nilScore}}</div></div>
+              </div>
+              <div [ngClass]="nilScore === 150 ? 'row p-2 alternate-row' : 'row p-2'">
+                <div class="col-2">7</div>
+                <div class="col-2">160</div>
+                <div class="col-2">180</div>
+                <div class="col-2">200</div>
+                <div class="col-2">220</div>
+                <div class="col-2">240</div>
+              </div>
+              <div class="row p-2 alternate-row" *ngIf="nilScore === 250">
+                <div class="col-2">NIL</div>
+                <div class="col-10">
+                  <div class="d-flex justify-content-center">{{nilScore}}</div></div>
+              </div>
+              <div class="row p-2">
+                <div class="col-2">8</div>
+                <div class="col-2">260</div>
+                <div class="col-2">280</div>
+                <div class="col-2">300</div>
+                <div class="col-2">320</div>
+                <div class="col-2">340</div>
+              </div>
+              <div class="row p-2 alternate-row">
+                <div class="col-2">9</div>
+                <div class="col-2">360</div>
+                <div class="col-2">380</div>
+                <div class="col-2">400</div>
+                <div class="col-2">420</div>
+                <div class="col-2">440</div>
+              </div>
+              <div class="row p-2">
+                <div class="col-2">10</div>
+                <div class="col-2">460</div>
+                <div class="col-2">480</div>
+                <div class="col-2">500</div>
+                <div class="col-2">520</div>
+                <div class="col-2">540</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-1" *ngIf="currentHand">
+          <div class="col p-2">
+            <div class="container-fluid p-0">
+              <div class="row p-2 align-items-center">
+                <div class="col p-0">
+                  <h2 class="mb-0">CURRENT BID</h2>
+                  <h2>
+                    {{currentHand.player}} - <span *ngIf="!(currentHand.suit === 'Nil')">{{currentHand.bid}}</span>
+                    {{suitString}}
+                    <div class="text-danger" *ngIf="forTheWin">FOR THE WIN</div>
+                    <div class="text-danger" *ngIf="loseIfSet">IF YOU GET SET, YOU LOSE</div>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="pt-5"></div>
+          <div class="pt-5"></div>
+        </div>
+        <div class="row fixed-bottom m-2">
+          <div class="col p-2">
+            <button type="button" class="btn" [ngClass]="!(currentHand) ? 'btn-primary' : 'btn-light'" style="width: 100%;" (click)="bid()">BID</button>
+          </div>
+          <div class="col p-2 justify-content-end">
+            <button  type="button" class="btn" [ngClass]="(currentHand) ? 'btn-primary' : 'btn-light'"  style="width: 100%;" (click)="score()" [disabled]="!(currentHand)">SCORE</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <!-- past hands -->
+    <div class="col-lg-3 col-xl-3">
+      <app-score-table class="d-none d-lg-block d-xl-block"  style="padding-bottom: 100px;"></app-score-table>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="event?.currentGame == null">
+  <div class="row">
+    <div class="col-12">
+      Setting up game...
+    </div>
+  </div>
+</div>

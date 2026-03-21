@@ -1,0 +1,41 @@
+<mat-toolbar style="background-color: #555555;" color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"  *ngIf="event">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="startNewGame()">
+      <mat-icon>play_arrow</mat-icon>
+      <span>New Game</span>
+    </button>
+    <button mat-menu-item (click)="share()">
+      <mat-icon>share</mat-icon>
+      <span>Invite Others</span>
+    </button>
+    <button mat-menu-item routerLink="" [queryParams]="{'view': 'Statistics'}" queryParamsHandling="merge">
+      <mat-icon>insights</mat-icon>
+      <span>Statistics</span>
+    </button>
+    <button mat-menu-item (click)="onSettings()">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-menu-item (click)="onQuit()">
+      <mat-icon>logout</mat-icon>
+      <span>Quit</span>
+    </button>
+  </mat-menu>
+  <span>500 {{currentUser}}</span>
+  <span class="example-spacer"></span>
+  <button *ngIf="event && appState?.userKey" mat-icon-button class="material-icons-outlined" routerLink="" [queryParams]="{'view': 'Statistics'}" queryParamsHandling="merge" aria-label="Statistics" title="Statistics">
+    <mat-icon>insights</mat-icon>
+  </button>
+ <button *ngIf="event && appState?.userKey && showChads" (click)="sendChad()" mat-icon-button class="material-icons-outlined" aria-label="Fucking Chad" title="Fucking Chad">
+    <img src="/assets/bong.png" style="width: 15px;vertical-align: top;">
+  </button>
+  <button *ngIf="showNewGameAlert()" (click)="startNewGame()"  mat-icon-button class="material-icons-outlined" title="New Game">
+    <mat-icon>play_arrow</mat-icon>
+  </button>
+  <button *ngIf="refreshService.refreshSuspended" (click)="refresh()"  mat-icon-button class="material-icons-outlined" title="Refresh">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</mat-toolbar>

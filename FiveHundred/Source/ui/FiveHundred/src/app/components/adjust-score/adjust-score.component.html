@@ -1,0 +1,31 @@
+<mat-dialog-content>
+  <div class="container-fluid bordered">
+    <div class="row align-items-center pb-0">
+      <div class="col-6">
+        <h3 class="m-0">
+        {{teamA?.playerA}}<br>
+        {{teamA?.playerB}}
+        </h3>
+      </div>
+        <div class="col-6">
+          <h3 class="m-0">{{teamB?.playerA}}<br>
+          {{teamB?.playerB}}</h3>
+        </div>
+    </div>
+    <div class="row align-items-center pb-0">
+        <div class="col-6 pr-1">
+          <mat-form-field style="width: 60px;">
+            <input matInput type="text" [formControl]="teamAFormControl" (change)="validate()" >
+          </mat-form-field>
+        </div>
+        <div class="col-6 pr-1">
+          <mat-form-field style="width: 60px;">
+            <input matInput type="text" [formControl]="teamBFormControl" (change)="validate()" >
+          </mat-form-field>
+        </div>
+    </div>
+    <div class="row pt-2">
+      <button class="btn btn-primary full-width" [mat-dialog-close]="result" [disabled]="invalid">SUBMIT</button>
+    </div>
+  </div>
+</mat-dialog-content>

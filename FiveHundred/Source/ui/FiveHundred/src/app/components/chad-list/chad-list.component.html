@@ -1,0 +1,38 @@
+<div #content class="chadContent">
+  <div class="container-fluid pt-3">
+    <div class="row">
+      <div class="col" style="margin-left: 5px; margin-right: 5px;">
+        <H1 class="text-primary">FUCKING CHADS</H1>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="container" *ngIf="event?.currentGame">
+          <div *ngIf="(event?.fuckingChads?.length ?? 0) == 0" style="margin-left: 5px; margin-right: 5px;">
+            <p><i>Click send to <strong>SEND</strong> the 1st fucking chad</i></p>
+          </div>
+          <div *ngFor="let fc of event?.fuckingChads; let i = index" style="margin-left: 5px; margin-right: 5px;">
+            <div class="row" (click)="showChad(fc)">
+              <div class="col-12">
+                <a (click)="showChad(fc)">{{fc.to}} - {{getDate(fc.createDate)|date:'h:mm a'}}</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <a (click)="showChad(fc)" class="chad-text">{{fc.chadism}}</a>
+                <!-- <h3 class="m-0 p-0 chad-text"><a (click)="showChad(fc)"><i>"{{fc.chadism}}"</i></a></h3> -->
+              </div>
+            </div>
+            <div class="row pb-1 pt-1 ml-2 mr-2"  *ngIf="i < ((event?.fuckingChads?.length??0)-1)">
+              <div class="col-12">
+                <hr class="bg-dark border-2 border-top border-dark">
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-back-button *ngIf="appState?.appBusy == false"></app-back-button>
+
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Code\FiveHundred\Source\api\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2022-04-02T02:48:19.2390369Z;False|2022-04-01T21:44:33.7889385-05:00;True|2022-04-01T21:17:40.8545287-05:00;True|2022-04-01T20:38:16.3792343-05:00;False|2022-04-01T20:36:55.8089964-05:00;False|2022-04-01T20:35:24.2234972-05:00;False|2022-04-01T20:33:57.4395169-05:00;False|2022-04-01T20:33:03.5064818-05:00;True|2022-03-18T15:37:34.1821010-05:00;True|2022-03-18T15:36:25.6472432-05:00;True|2022-03-18T15:31:43.0494927-05:00;True|2022-03-18T15:30:41.2798829-05:00;True|2022-03-18T15:29:28.7200245-05:00;True|2021-11-20T21:17:46.3412474-06:00;</History>
+  </PropertyGroup>
+</Project>

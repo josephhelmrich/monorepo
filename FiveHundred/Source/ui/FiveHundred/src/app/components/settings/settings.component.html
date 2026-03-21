@@ -1,0 +1,36 @@
+<mat-dialog-content>
+  <form class="form">
+    <div class="container-fluid bordered">
+      <div class="row align-items-center pb-2">
+        <div class="col-12">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>WINNING SCORE</mat-label>
+            <input matInput type="text" placeholder="REQUIRED" [formControl]="scoreControl">
+            <mat-error *ngIf="scoreControl.hasError('required')">
+              SCORE IS REQUIRED
+            </mat-error>
+            <mat-error *ngIf="scoreControl.hasError('min')">
+              SCORE MUST BE > 0
+            </mat-error>
+            <mat-error *ngIf="scoreControl.hasError('max')">
+              SCORE MUST BE < 2000
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row align-items-center pb-3">
+        <div class="col-12">
+          <mat-checkbox [checked]="muted" (change)="setMuted($event)" >MUTE</mat-checkbox>
+        </div>
+      </div>
+      <div class="row align-items-center pb-3">
+        <div class="col-12">
+          <mat-checkbox [checked]="nilAlone" (change)="setNilAlone($event)" >NIL Alone</mat-checkbox>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <button class="btn btn-primary full-width" (click)="onSubmit()" [disabled]="scoreControl.invalid">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

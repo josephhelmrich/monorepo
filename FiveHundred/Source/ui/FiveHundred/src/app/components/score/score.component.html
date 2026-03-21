@@ -1,0 +1,107 @@
+<mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn-close float-end" aria-label="Close" mat-dialog-close></button>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="d-flex pb-1 pt-3">
+      <H2>Actual Tricks</H2>
+    </div>
+    <div class="d-flex pb-2" style="height: 60px;">
+      <div class="btn-group" role="group" aria-label="Bid">
+        <button type="button" *ngIf="result.actualTricks!=0" class="btn btn" (click)="setActualTricks(0)">0</button>
+        <button type="button" *ngIf="result.actualTricks==0" class="btn btn-primary" (click)="setActualTricks(0)">0</button>
+
+        <button type="button" *ngIf="result.actualTricks!=1" class="btn btn" (click)="setActualTricks(1)">1</button>
+        <button type="button" *ngIf="result.actualTricks==1" class="btn btn-primary" (click)="setActualTricks(1)">1</button>
+
+        <button type="button" *ngIf="result.actualTricks!=2" class="btn btn" (click)="setActualTricks(2)">2</button>
+        <button type="button" *ngIf="result.actualTricks==2" class="btn btn-primary" (click)="setActualTricks(2)">2</button>
+
+        <button type="button" *ngIf="result.actualTricks!=3" class="btn btn" (click)="setActualTricks(3)">3</button>
+        <button type="button" *ngIf="result.actualTricks==3" class="btn btn-primary" (click)="setActualTricks(3)">3</button>
+
+        <button type="button" *ngIf="result.actualTricks!=4" class="btn btn" (click)="setActualTricks(4)">4</button>
+        <button type="button" *ngIf="result.actualTricks==4" class="btn btn-primary" (click)="setActualTricks(4)">4</button>
+
+        <button type="button" *ngIf="result.actualTricks!=5" class="btn btn" (click)="setActualTricks(5)">5</button>
+        <button type="button" *ngIf="result.actualTricks==5" class="btn btn-primary" (click)="setActualTricks(5)">5</button>
+      </div>
+    </div>
+    <div class="d-flex pb-2" style="height: 60px;">
+      <div class="btn-group" role="group" aria-label="Bid">
+        <button type="button" *ngIf="result.actualTricks!=6" class="btn btn" (click)="setActualTricks(6)">6</button>
+        <button type="button" *ngIf="result.actualTricks==6" class="btn btn-primary" (click)="setActualTricks(6)">6</button>
+
+        <button type="button" *ngIf="result.actualTricks!=7" class="btn btn" (click)="setActualTricks(7)">7</button>
+        <button type="button" *ngIf="result.actualTricks==7" class="btn btn-primary" (click)="setActualTricks(7)">7</button>
+
+        <button type="button" *ngIf="result.actualTricks!=8" class="btn btn" (click)="setActualTricks(8)">8</button>
+        <button type="button" *ngIf="result.actualTricks==8" class="btn btn-primary" (click)="setActualTricks(8)">8</button>
+
+        <button type="button" *ngIf="result.actualTricks!=9" class="btn btn" (click)="setActualTricks(9)">9</button>
+        <button type="button" *ngIf="result.actualTricks==9" class="btn btn-primary" (click)="setActualTricks(9)">9</button>
+
+        <button type="button" *ngIf="result.actualTricks!=10" class="btn btn" (click)="setActualTricks(10)">10</button>
+        <button type="button" *ngIf="result.actualTricks==10" class="btn btn-primary" (click)="setActualTricks(10)">10</button>
+
+      </div>
+    </div>
+    <div class="d-flex pb-1 pt-3" *ngIf="bidModel.suit == 'Nil' && !nilAlone">
+      <H2>Partner's Tricks (Nil Only)</H2>
+    </div>
+    <div class="d-flex pb-2" style="height: 60px;" *ngIf="bidModel.suit == 'Nil' && !nilAlone">
+      <div class="btn-group" role="group" aria-label="Partner Tricks">
+        <button type="button" *ngIf="result.partnerTricks!=0" class="btn btn" (click)="setPartnerTricks(0)">0</button>
+        <button type="button" *ngIf="result.partnerTricks==0" class="btn btn-primary" (click)="setPartnerTricks(0)">0</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=1" class="btn btn" (click)="setPartnerTricks(1)">1</button>
+        <button type="button" *ngIf="result.partnerTricks==1" class="btn btn-primary" (click)="setPartnerTricks(1)">1</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=2" class="btn btn" (click)="setPartnerTricks(2)">2</button>
+        <button type="button" *ngIf="result.partnerTricks==2" class="btn btn-primary" (click)="setPartnerTricks(2)">2</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=3" class="btn btn" (click)="setPartnerTricks(3)">3</button>
+        <button type="button" *ngIf="result.partnerTricks==3" class="btn btn-primary" (click)="setPartnerTricks(3)">3</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=4" class="btn btn" (click)="setPartnerTricks(4)">4</button>
+        <button type="button" *ngIf="result.partnerTricks==4" class="btn btn-primary" (click)="setPartnerTricks(4)">4</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=5" class="btn btn" (click)="setPartnerTricks(5)">5</button>
+        <button type="button" *ngIf="result.partnerTricks==5" class="btn btn-primary" (click)="setPartnerTricks(5)">5</button>
+      </div>
+    </div>
+    <div class="d-flex pb-2" style="height: 60px;" *ngIf="bidModel.suit == 'Nil' && !nilAlone">
+      <div class="btn-group" role="group" aria-label="Bid">
+        <button type="button" *ngIf="result.partnerTricks!=6" class="btn btn" (click)="setPartnerTricks(6)">6</button>
+        <button type="button" *ngIf="result.partnerTricks==6" class="btn btn-primary" (click)="setPartnerTricks(6)">6</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=7" class="btn btn" (click)="setPartnerTricks(7)">7</button>
+        <button type="button" *ngIf="result.partnerTricks==7" class="btn btn-primary" (click)="setPartnerTricks(7)">7</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=8" class="btn btn" (click)="setPartnerTricks(8)">8</button>
+        <button type="button" *ngIf="result.partnerTricks==8" class="btn btn-primary" (click)="setPartnerTricks(8)">8</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=9" class="btn btn" (click)="setPartnerTricks(9)">9</button>
+        <button type="button" *ngIf="result.partnerTricks==9" class="btn btn-primary" (click)="setPartnerTricks(9)">9</button>
+
+        <button type="button" *ngIf="result.partnerTricks!=10" class="btn btn" (click)="setPartnerTricks(10)">10</button>
+        <button type="button" *ngIf="result.partnerTricks==10" class="btn btn-primary" (click)="setPartnerTricks(10)">10</button>
+
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
+      <!-- <div class="col">
+        <button type="button" class="btn" mat-dialog-close>CANCEL</button>
+      </div>
+      <div class="col"> -->
+        <button type="button" class="btn btn-primary" [mat-dialog-close]="result" [disabled]="disabled">SUBMIT</button>
+      <!-- </div> -->
+    </div>
+  </div>
+</mat-dialog-content>

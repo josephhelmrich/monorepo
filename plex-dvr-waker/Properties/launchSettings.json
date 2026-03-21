@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PlexDvrWaker": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<!-- <app-header-container></app-header-container> -->
+<div class="container-fluid pt-3">
+  <div class="row pb-4" *ngIf="this.appState?.view == 'Score'">
+    <div class="col justify-content-center">
+      <app-game-score [event]="event"></app-game-score>
+    </div>
+  </div>
+  <div class="row pb-4" *ngIf="this.appState?.view == 'Game'">
+    <div class="d-flex justify-content-center">
+      <h1>Past Hands</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container ps-0 pe-0" *ngIf="event?.currentGame">
+      <div *ngFor="let h of event?.currentGame?.pastHands; let i = index" [ngClass]="i % 2 == 1 ? 'scoreRow highlight' : 'scoreRow'" >
+        <div class="row p-2" (click)="adjustScore(h)">
+          <div class="col-3">
+            <h2 class="mt-0 mb-0 text-center" *ngIf="isTeamA(h)">
+              <span *ngIf="!(h.suit === 'Nil')">{{h.bid}}</span>
+              <app-suit-icon class="ps-2" [suit]="h.suit" width="20"></app-suit-icon>
+            </h2>
+            <div class="text-center" *ngIf="isTeamA(h)">{{getBidUsername(h)}}</div>
+          </div>
+          <div class="col-6 pb-0">
+            <div class="container p-0 m-0">
+              <div class="row" *ngIf="i > 0">
+                <div class="col text-center" [ngClass]="(h.teamAScore?.handScore ?? 0) < 0 ? 'text-danger' : ''">
+                  {{h.teamAScore?.handScore }}
+                </div>
+                <div class="col text-center" [ngClass]="(h.teamBScore?.handScore ?? 0) < 0 ? 'text-danger' : ''">
+                  {{h.teamBScore?.handScore }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col text-center">
+                  <h1 class="m-0">{{h.teamAScore?.gameScore }}</h1>
+                </div>
+                <div class="col text-center">
+                  <h1 class="m-0">{{h.teamBScore?.gameScore }}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <h2 class="mt-0 mb-0 text-center" *ngIf="isTeamB(h)">
+              <span *ngIf="!(h.suit === 'Nil')">{{h.bid}}</span>
+              <app-suit-icon class="ps-2" [suit]="h.suit" width="20"></app-suit-icon>
+            </h2>
+            <div class="text-center" *ngIf="isTeamB(h)">{{getBidUsername(h)}}</div>
+          </div>
+
+        </div>
+        <div class="row mb-0 pt-0 ml-2 mr-2"  *ngIf="i < ((event?.currentGame?.pastHands?.length??0)-1)">
+          <div class="col-3">
+
+          </div>
+          <div class="col-12">
+            <hr class="bg-dark border-1 border-top border-dark">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-back-button *ngIf="appState?.appBusy == false && this.appState?.view == 'Score'"></app-back-button>
