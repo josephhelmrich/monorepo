@@ -1,0 +1,21 @@
+<mat-dialog-content>
+  <div class="container p-0 m-0">
+    <div class="row">
+      <div class="col justify-content-center">
+        <h3>FUCKING CHAD</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-select-user ([user])="selectedUser" (userChange)="userChanged($event)"></app-select-user>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span style="margin-left: 24px;">
+          <a routerLink="" [queryParams]="{view: 'Chads'}" queryParamsHandling="merge" (click)="close()" >View Previous Chads</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

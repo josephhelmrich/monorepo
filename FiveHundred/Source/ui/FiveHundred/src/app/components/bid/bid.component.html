@@ -1,0 +1,95 @@
+<mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn-close float-end" aria-label="Close" mat-dialog-close></button>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <!-- <div class="d-flex pb-1">
+      PLAYER
+    </div>
+    <div class="d-flex pb-1">
+      <div class="container-fluid bordered">
+        <div class="row align-items-center pb-0">
+          <div class="col-6">
+            <div class="btn-group" role="suit" aria-label="Suit">
+              <button type="button" *ngIf="bidModel.userKey == teamA?.userA?.id" class="btn btn-primary full-width mb-0" (click)="setUser(teamA?.userA)">{{teamA?.playerA}}</button><br>
+              <button type="button" *ngIf="bidModel.userKey != teamA?.userA?.id" class="btn btn full-width mb-0" (click)="setUser(teamA?.userA)">{{teamA?.playerA}}</button><br>
+              <button type="button" *ngIf="bidModel.userKey == teamA?.userB?.id" class="btn btn full-width mb-0" (click)="setUser(teamA?.userB)">{{teamA?.playerB}}</button>
+              <button type="button" *ngIf="bidModel.userKey != teamA?.userB?.id" class="btn btn full-width mb-0" (click)="setUser(teamA?.userB)">{{teamA?.playerB}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="d-flex pb-1">
+      PLAYER
+    </div>
+    <div class="d-inline-flex pb-2" *ngFor="let u of users">
+      <div class="col">
+        <button type="button" *ngIf="bidModel.userKey == u.id" class="btn btn-primary p-2" (click)="setUser(u)">{{u.name}}</button>
+        <button type="button" *ngIf="bidModel.userKey != u.id" class="btn p-2" (click)="setUser(u)">{{u.name}}</button>
+      </div>
+    </div>
+    <div class="d-flex pb-1">
+      SUIT
+    </div>
+    <div class="d-flex pb-2">
+      <div class="btn-group" role="suit" aria-label="Suit">
+        <button type="button" *ngIf="suitString!='spades'" class="btn" (click)="setSuit('spades')"><img src="/assets/spades.png" width="25"></button>
+        <button type="button" *ngIf="suitString=='spades'" class="btn btn-primary" (click)="setSuit('spades')"><img src="/assets/spades.png" width="25"></button>
+
+        <button type="button" *ngIf="suitString!='clubs'" class="btn" (click)="setSuit('clubs')"><img src="/assets/clubs.png" width="25"></button>
+        <button type="button" *ngIf="suitString=='clubs'" class="btn btn-primary" (click)="setSuit('clubs')"><img src="/assets/clubs.png" width="25"></button>
+
+        <button type="button" *ngIf="suitString!='diamonds'" class="btn" (click)="setSuit('diamonds')"><img src="/assets/diamonds.png" width="25"></button>
+        <button type="button" *ngIf="suitString=='diamonds'" class="btn btn-primary" (click)="setSuit('diamonds')"><img src="/assets/diamonds.png" width="25"></button>
+
+        <button type="button" *ngIf="suitString!='hearts'" class="btn" (click)="setSuit('hearts')"><img src="/assets/hearts.png" width="25"></button>
+        <button type="button" *ngIf="suitString=='hearts'" class="btn btn-primary" (click)="setSuit('hearts')"><img src="/assets/hearts.png" width="25"></button>
+
+        <button type="button" *ngIf="suitString!='noTrump'" class="btn" (click)="setSuit('noTrump')"><img src="/assets/notrump.png" width="25"></button>
+        <button type="button" *ngIf="suitString=='noTrump'" class="btn btn-primary" (click)="setSuit('noTrump')"><img src="/assets/notrump.png" width="25"></button>
+      </div>
+    </div>
+    <div class="d-flex pb-2">
+      <div class="btn-group" role="suit" aria-label="Suit">
+        <button type="button" *ngIf="suitString!='Nil'" class="btn" (click)="setSuit('Nil')">NIL</button>
+        <button type="button" *ngIf="suitString=='Nil'" class="btn btn-primary" (click)="setSuit('Nil')">NIL</button>
+      </div>
+    </div>
+    <div class="d-flex pb-1 pt-3" *ngIf="suitString!='Nil'">
+      BID
+    </div>
+    <div class="d-flex pb-2" style="height: 60px;" *ngIf="suitString!='Nil'">
+      <div class="btn-group" role="group" aria-label="Bid">
+        <button type="button" *ngIf="bidModel.bid!=6" class="btn btn" (click)="setBid(6)">6</button>
+        <button type="button" *ngIf="bidModel.bid==6" class="btn btn-primary" (click)="setBid(6)">6</button>
+
+        <button type="button" *ngIf="bidModel.bid!=7" class="btn btn" (click)="setBid(7)">7</button>
+        <button type="button" *ngIf="bidModel.bid==7" class="btn btn-primary" (click)="setBid(7)">7</button>
+
+        <button type="button" *ngIf="bidModel.bid!=8" class="btn btn" (click)="setBid(8)">8</button>
+        <button type="button" *ngIf="bidModel.bid==8" class="btn btn-primary" (click)="setBid(8)">8</button>
+
+        <button type="button" *ngIf="bidModel.bid!=9" class="btn btn" (click)="setBid(9)">9</button>
+        <button type="button" *ngIf="bidModel.bid==9" class="btn btn-primary" (click)="setBid(9)">9</button>
+
+        <button type="button" *ngIf="bidModel.bid!=10" class="btn btn" (click)="setBid(10)">10</button>
+        <button type="button" *ngIf="bidModel.bid==10" class="btn btn-primary" (click)="setBid(10)">10</button>
+
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <!-- <div class="col">
+        <button type="button" class="btn" mat-dialog-close>CANCEL</button>
+      </div>
+      <div class="col"> -->
+        <button type="button" class="btn btn-primary" [mat-dialog-close]="bidModel" [disabled]="disabled">SUBMIT</button>
+      <!-- </div> -->
+    </div>
+  </div>
+</mat-dialog-content>

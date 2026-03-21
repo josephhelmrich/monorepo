@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Stabalize": {
+      "commandName": "Project",
+      "commandLineArgs": "-te Silhouette.mp4 00:00:13"
+    }
+  }
+}

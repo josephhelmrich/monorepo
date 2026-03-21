@@ -1,0 +1,22 @@
+<mat-dialog-content>
+  <div class="container"*ngIf="appState?.eventKey != null">
+    <div class="row">
+      <div class="col justify-content-center">
+        <h3>SEND THE LINK BELOW</h3>
+      </div>
+    </div>
+    <div class="row align-items-start">
+      <div class="col">
+        <mat-form-field class="full-width" appearance="fill">
+          <input matInput type="text" [ngModel]="getEventUrl()">
+          <button matSuffix mat-icon-button aria-label="copy" autofocus title="copy" [cdkCopyToClipboard]="getEventUrl()" mat-dialog-close>
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close autofocus>OK</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

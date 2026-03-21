@@ -1,0 +1,35 @@
+<mat-tab-group mat-align-tabs="Start">
+  <mat-tab *ngFor="let page of this.appState?.stats?.pages" [label]="page.name">
+    <div class="container-fluid pt-3">
+      <div *ngIf="page.name && page.name.startsWith('Game')">
+        <div class="row">
+          <div class="col-12 p-0">
+            <mat-form-field appearance="fill"  style="width: 100%;">
+              <mat-label>Select Game</mat-label>
+              <mat-select [(value)]="selectedGame" (valueChange)="gameSelected($event)" >
+                <mat-option *ngFor="let g of games; let i = index" [value]="g">Game #{{i+1}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let group of page.groups">
+        <div class="row" *ngIf="group.name != 'Overall'">
+          <div class="col-12">
+            <h2>{{group.name}}</h2>
+          </div>
+        </div>
+        <div class="row" *ngFor="let stat of group.statistics; let i = index" [ngClass]="i % 2 == 0 ? 'highlight' : ''" >
+          <div class="col-6">
+            <h4>{{stat.name}}</h4>
+          </div>
+          <div class="col statValue">
+            <h4>{{stat.value}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<app-back-button *ngIf="appState?.appBusy == false"></app-back-button>
