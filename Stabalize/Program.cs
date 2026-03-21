@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography;
 
 namespace FFHelper
 {    
@@ -21,11 +20,18 @@ namespace FFHelper
             if (args == null || args?.Length < 2)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe {output} {input_file}");
+                Console.WriteLine("FFHelper.exe [operation] [options]");
+                Console.WriteLine("Operations:");
+                Console.WriteLine("   -s [input_file] - Stabalize Video");
+                Console.WriteLine("   -x [factor] [input_file] - Speed Up Video by Factor");
+                Console.WriteLine("   -1080 [input_file] - Scale Video to 1080P");
+                Console.WriteLine("   -ts [input_file] [hh:mm:ss] - Trim Start of Video");
+                Console.WriteLine("   -te [input_file] [hh:mm:ss] - Trim End of Video");    
+                Console.WriteLine("   -c [folder] - Concat Videos in Folder. Files cannot have spaces in the name");
                 return 100001;
             }
 
-            if (args[0] == "-s")
+            if (args![0] == "-s")
             {
                 return Stabalize(args.Skip(1).ToArray());
             }
@@ -65,7 +71,7 @@ namespace FFHelper
             if (args?.Length != 2)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -ts {input_file} {hh:mm:ss}");
+                Console.WriteLine("FFHelper.exe -ts [input_file] [hh:mm:ss]");
                 return 30;
             }
 
@@ -75,7 +81,7 @@ namespace FFHelper
                 Console.WriteLine($"{input} does not exist");
                 return 31;
             }
-            var path = Path.GetDirectoryName(input);
+            var path = Path.GetDirectoryName(input)!;
             var output = Path.Combine(path, Path.GetFileNameWithoutExtension(input));
             output += $"_Trimmed{Path.GetExtension(input)}";
             if (File.Exists(output))
@@ -100,7 +106,7 @@ namespace FFHelper
             if (args?.Length != 2)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -te {input_file} {hh:mm:ss}");
+                Console.WriteLine("FFHelper.exe -te [input_file] [hh:mm:ss]");
                 return 30;
             }
 
@@ -110,7 +116,7 @@ namespace FFHelper
                 Console.WriteLine($"{input} does not exist");
                 return 31;
             }
-            var path = Path.GetDirectoryName(input);
+            var path = Path.GetDirectoryName(input)!;
             var output = Path.Combine(path, Path.GetFileNameWithoutExtension(input));
             output += $"_Trimmed{Path.GetExtension(input)}";
             if (File.Exists(output))
@@ -133,7 +139,7 @@ namespace FFHelper
             if (args?.Length != 1)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -1080 {input_file}");
+                Console.WriteLine("FFHelper.exe -1080 [input_file]");
                 return 30;
             }
 
@@ -143,7 +149,7 @@ namespace FFHelper
                 Console.WriteLine($"{input} does not exist");
                 return 31;
             }
-            var path = Path.GetDirectoryName(input);
+            var path = Path.GetDirectoryName(input)!;
             var output = Path.Combine(path, Path.GetFileNameWithoutExtension(input));
             output += $"_1080{Path.GetExtension(input)}";
             if (File.Exists(output))
@@ -166,7 +172,7 @@ namespace FFHelper
             if (args?.Length != 1)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -c {Folder}");
+                Console.WriteLine("FFHelper.exe -c [Folder]");
                 return 20;
             }
 
@@ -214,7 +220,7 @@ namespace FFHelper
             if (args?.Length != 2 || args[0].Length < 3)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -x{factor} {input_file}");
+                Console.WriteLine("FFHelper.exe -x [factor] [input_file]");
                 return 10;
             }
 
@@ -222,7 +228,7 @@ namespace FFHelper
             if (!int.TryParse(factor, out var speed_factor))
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -x{factor:int} {input_file}");
+                Console.WriteLine("FFHelper.exe -x [factor:int] [input_file]");
                 return 11;
             }
 
@@ -232,7 +238,7 @@ namespace FFHelper
                 Console.WriteLine($"{input} does not exist");
                 return 12;
             }
-            var path = Path.GetDirectoryName(input);
+            var path = Path.GetDirectoryName(input)!;
             var output = Path.Combine(path, Path.GetFileNameWithoutExtension(input));
             output += $"_{speed_factor}X{Path.GetExtension(input)}";
             if (File.Exists(output))
@@ -254,7 +260,7 @@ namespace FFHelper
             if (args?.Length != 1)
             {
                 Console.WriteLine("Usage:");
-                Console.WriteLine("FFHelper.exe -s {input_file}");
+                Console.WriteLine("FFHelper.exe -s [input_file]");
                 return 2;
             }
 
@@ -266,7 +272,7 @@ namespace FFHelper
             }
 
 
-            var path = Path.GetDirectoryName(input);
+            var path = Path.GetDirectoryName(input)!;
             var output = Path.Combine(path, Path.GetFileNameWithoutExtension(input));
             output += $"_stablized{Path.GetExtension(input)}";
 
