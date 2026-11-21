@@ -2,7 +2,7 @@
   "profiles": {
     "Stabalize": {
       "commandName": "Project",
-      "commandLineArgs": "-te Silhouette.mp4 00:00:13"
+      "commandLineArgs": "-x 60 D:\\DCIM\\100GOPRO\\GX020579.MP4"
     }
   }
 }
