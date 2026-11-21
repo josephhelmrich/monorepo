@@ -11,6 +11,12 @@ namespace FFHelper
         const string ffmpeg_exe = "ffmpeg.exe";
         public static int Main(string[] args)
         {
+            Console.WriteLine("Arguments:");
+            foreach (var a in args)
+            {
+                Console.WriteLine(a);  
+            }
+
             if (!File.Exists(ffmpeg_exe))
             {
                 Console.WriteLine($"{ffmpeg_exe} could not be found");
@@ -189,7 +195,7 @@ namespace FFHelper
             var concat_file = Path.Combine(folder, "concat.txt");
             using (var fs = File.CreateText(concat_file))
             {
-                foreach (var mp4 in Directory.GetFiles(folder, "*.mp4"))
+                foreach (var mp4 in Directory.GetFiles(folder, "*.mp4").OrderBy(x => x))
                 {
                     var file = Path.GetFileName(mp4);
                     fs.WriteLine($"file '{file}'");
@@ -217,14 +223,14 @@ namespace FFHelper
 
         public static int SpeedUp(string[] args)
         {
-            if (args?.Length != 2 || args[0].Length < 3)
+            if (args?.Length != 3 || args[2].Length < 3)
             {
                 Console.WriteLine("Usage:");
                 Console.WriteLine("FFHelper.exe -x [factor] [input_file]");
                 return 10;
             }
 
-            var factor = args[0].Replace("-x", string.Empty)?.Trim();
+            var factor = args[1]; //.Replace("-x", string.Empty)?.Trim();
             if (!int.TryParse(factor, out var speed_factor))
             {
                 Console.WriteLine("Usage:");
@@ -232,7 +238,7 @@ namespace FFHelper
                 return 11;
             }
 
-            var input = args[1];
+            var input = args[2];
             if (!File.Exists(input))
             {
                 Console.WriteLine($"{input} does not exist");
